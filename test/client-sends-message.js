@@ -11,7 +11,14 @@ describe('When client sends a message from his account', function () {
 
     describe('I ask to send message', function () {
         it('Server sends message', function () {
+            assert.deepEqual(server.sendMessage({name: 'Ivan', sorname: 'Petrov'}, 'asdhb', 'friend@another.com', 'message'), true)
+        });
 
+    });
+    describe('I ask to send message to unacceptable email address', function () {
+        it('Server rejects', function () {
+            assert.deepEqual(server.sendMessage({name: 'Ivan', sorname: 'Petrov'}, 'asdhb', 'friend@', 'message'),
+                "Recipient email is not correct")
         });
 
     });
