@@ -1,18 +1,8 @@
 'use strict';
 //const accounts = [];
 const Server = require('./server');
-class Client {
-    constructor() {
-        this._name = {
-            name: 'Ivan',
-            sorname: 'Petrov'
-        };
-    }
+const Client = require('./client');
 
-    get clientName() {
-        return this._name;
-    }
-}
 
 
 /**
