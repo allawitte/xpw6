@@ -6,13 +6,19 @@ var Server = require('../src/server');
 describe('When server creates the first account', function () {
     var server = {};
 
-    beforeEach(function () {
+    before(function () {
         server = new Server();
     });
-    describe('I ask for first account acceptable length - asds', function () {
+    describe('I ask for first account acceptable length - asdhb', function () {
         it('Server creates a record with my name and account', function () {
             assert.deepEqual(server._saveAccountForUser({name: 'Ivan', sorname: 'Petrov'}, 'asdhb'),
-                 ['asdhb']);
+                ['asdhb']);
+        });
+    });
+    describe('I ask for first account acceptable length - asdhb', function () {
+        it('Server creates a record with my name and account11', function () {
+            assert.deepEqual(server._saveAccountForUser({name: 'Ivan', sorname: 'Petrov'}, 'asdhba'),
+                ['asdhb','asdhba']);
         });
     });
 });

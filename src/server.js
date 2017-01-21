@@ -17,7 +17,7 @@ class Server {
         if (accountName.length > 19){
             return 'Maximum length of account name should be shorter then 20 symbols';
         }
-        this._list[clientName.name+'_'+clientName.sorname] = this._saveAccountForUser(clientName, accountName);
+        this._saveAccountForUser(clientName, accountName);
 
         return {
             name: clientName,
@@ -30,12 +30,12 @@ class Server {
         if(!clientRecord){
             clientRecord = [];
             clientRecord.push(accountName);
-             return   clientRecord;
         }
         else {
             clientRecord.push(accountName);
-          return  clientRecord;
         }
+        this._list[clientName.name+'_'+clientName.sorname] = clientRecord;
+        return this._list[clientName.name+'_'+clientName.sorname];
     }
 }
 
