@@ -16,6 +16,13 @@ describe('When server creates the first account', function () {
         });
     });
 
+    describe('I ask for first account 20 symbols long - asdaedcvnmijkloiybdf', function () {
+        it('Server rejects to create an account asdaedcvnmijkloiybdf', function () {
+            assert.deepEqual(server.createAccount({name: 'Ivan', sorname: 'Petrov'}, 'asdaedcvnmijkloiybdf'),
+                'Maximum length of account name should be shorter then 20 symbols');
+        });
+    });
+
     describe('I ask for first account 4 symbols long - asdf', function () {
         it('I create an account asdf', function () {
             assert.deepEqual(server.createAccount({name: 'Ivan', sorname: 'Petrov'}, 'asdf'), {
