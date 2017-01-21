@@ -1,4 +1,5 @@
 'use strict';
+//const accounts = [];
 class Client {
     constructor() {
         this._name = {
@@ -9,6 +10,23 @@ class Client {
 
     get clientName() {
         return this._name;
+    }
+}
+
+class Server {
+    constructor(){
+        this._extention = '@myserver.my';
+    }
+
+    get extention(){
+        return this._extention;
+    }
+
+    createAccount(clientName, accountName){
+        return {
+            name: clientName,
+            account: accountName + this.extention
+        }
     }
 }
 /**
