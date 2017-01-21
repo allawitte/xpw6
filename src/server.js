@@ -40,9 +40,15 @@ class Server {
         this._list[clientName.name + '_' + clientName.sorname] = clientRecord;
         return this._list[clientName.name + '_' + clientName.sorname];
     }
+    
+    checkEmail(email){
+        if (email.match(/.+@.+\..+/i)){
+            return true;
+        }
+    }
 
     sendMessage(clientName, accountName, toRecipient, message) {
-        if (toRecipient.match(/.+@.+\..+/i)) {
+        if (this.checkEmail(toRecipient)) {
             return true;
         }
         else return 'Recipient email is not correct';
