@@ -15,7 +15,7 @@ describe('When server creates the first account', function () {
                 ['asdhb']);
         });
     });
-    describe('I ask for first account acceptable length - asdhb', function () {
+    describe('I ask for second account acceptable length - asdhb', function () {
         it('Server creates a record with my name and account11', function () {
             assert.deepEqual(server._saveAccountForUser({name: 'Ivan', sorname: 'Petrov'}, 'asdhba'),
                 ['asdhb','asdhba']);

@@ -32,6 +32,9 @@ class Server {
             clientRecord.push(accountName);
         }
         else {
+            if(clientRecord.some(item =>  item == accountName)){
+                return 'account already exists';
+            }
             clientRecord.push(accountName);
         }
         this._list[clientName.name+'_'+clientName.sorname] = clientRecord;
