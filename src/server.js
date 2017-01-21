@@ -13,6 +13,9 @@ class Server {
         if (accountName.length < 4){
             return 'Minimum length of account name should be longer then 3 symbols';
         }
+        if (accountName.length > 19){
+            return 'Maximum length of account name should be shorter then 20 symbols';
+        }
         return {
             name: clientName,
             account: accountName + this.extention
