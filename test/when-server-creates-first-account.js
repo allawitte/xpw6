@@ -8,9 +8,12 @@ describe('When server creates the first account', function () {
     beforeEach(function () {
         server = new Server();
     });
-    describe('I ask for first account between 4 and 19 symbols long', function () {
-        it('I have a glass with 50 grams of whisky', function () {
-
+    describe('I ask for first account 4 symbols long - asdf', function () {
+        it('I create an account asdf', function () {
+            assert.deepEqual(server.createAccount({name: 'Ivan', sorname: 'Petrov'}, 'asdf'), {
+                name: {name: 'Ivan', sorname: 'Petrov'},
+                account: 'asdf@myserver.my'
+            });
         });
     });
 });
