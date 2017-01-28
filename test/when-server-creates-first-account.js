@@ -9,23 +9,46 @@ describe('When server creates the first account', function () {
         server = new Server();
     });
 
-    describe('I ask for first account 3 symbols long - asd', function () {
-        it('Server rejects to create an account asd', function () {
-            assert.deepEqual(server.createAccount({name: 'Ivan', sorname: 'Petrov'}, 'asd'),
-                'Minimum length of account name should be longer then 3 symbols');
+    describe('I ask for first account 3 symbols long', function () {
+        it('Server rejects to create an account 3 symbols long', function () {
+            //Arrange
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asd';
+
+            //Act
+            var serverResponse = server.createAccount(userName, userAccount);
+
+            //Assert
+            assert.deepEqual(serverResponse, 'Minimum length of account name should be longer then 3 symbols');
         });
     });
 
-    describe('I ask for first account 20 symbols long - asdaedcvnmijkloiybdf', function () {
-        it('Server rejects to create an account asdaedcvnmijkloiybdf', function () {
-            assert.deepEqual(server.createAccount({name: 'Ivan', sorname: 'Petrov'}, 'asdaedcvnmijkloiybdf'),
-                'Maximum length of account name should be shorter then 20 symbols');
+    describe('I ask for first account 20 symbols long', function () {
+        it('Server rejects to create an account 20 symbols long', function () {
+            //Arrange
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdaedcvnmijkloiybdf';
+
+            //Act
+            var serverResponse = server.createAccount(userName, userAccount);
+
+            //Assert
+            assert.deepEqual(serverResponse, 'Maximum length of account name should be shorter then 20 symbols');
         });
     });
 
-    describe('I ask for first account 4 symbols long - asdf', function () {
-        it('I create an account asdf', function () {
-            assert.deepEqual(server.createAccount({name: 'Ivan', sorname: 'Petrov'}, 'asdf'), {
+    describe('I ask for first account 4 symbols long', function () {
+        it('I create an account 4 symbols long', function () {
+
+            //Arrange
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdf';
+
+            //Act
+            var serverResponse = server.createAccount(userName, userAccount);
+
+            //Assert
+            assert.deepEqual(serverResponse, {
                 name: {name: 'Ivan', sorname: 'Petrov'},
                 account: 'asdf@myserver.my'
             });

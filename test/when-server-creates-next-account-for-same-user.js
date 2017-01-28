@@ -10,21 +10,47 @@ describe('When server creates the first account', function () {
         server = new Server();
     });
     describe('I ask for first account acceptable length - asdhb', function () {
+
         it('Server creates a record with my name and account', function () {
-            assert.deepEqual(server._saveAccountForUser({name: 'Ivan', sorname: 'Petrov'}, 'asdhb'),
-                ['asdhb']);
+            //Arrange
+
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdhb';
+
+            //Act
+            var serverResponse = server._saveAccountForUser(userName, userAccount);
+
+            //Assert
+            assert.deepEqual(serverResponse, ['asdhb']);
         });
     });
     describe('I ask for second account acceptable length - asdhba', function () {
         it('Server creates a record with my name and account', function () {
-            assert.deepEqual(server._saveAccountForUser({name: 'Ivan', sorname: 'Petrov'}, 'asdhba'),
+            //Arrange
+
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdhba';
+
+            //Act
+            var serverResponse = server._saveAccountForUser(userName, userAccount);
+
+            //Assert
+            assert.deepEqual(serverResponse,
                 ['asdhb','asdhba']);
         });
     });
     describe('I ask for second account acceptable length with used name- asdhba', function () {
         it('Server rejects', function () {
-            assert.deepEqual(server._saveAccountForUser({name: 'Ivan', sorname: 'Petrov'}, 'asdhba'),
-                'account already exists');
+            //Arrange
+
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdhba';
+
+            //Act
+            var serverResponse = server._saveAccountForUser(userName, userAccount);
+
+            //Assert
+            assert.deepEqual(serverResponse, 'account already exists');
         });
     });
 });

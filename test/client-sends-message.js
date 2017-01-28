@@ -10,15 +10,35 @@ describe('When client sends a message from his account', function () {
     });
 
     describe('I ask to send message', function () {
+        
         it('Server sends message', function () {
-            assert.deepEqual(server.sendMessage({name: 'Ivan', sorname: 'Petrov'}, 'asdhb', 'friend@another.com', 'message'), true)
+            //Arrange
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdhb';
+            var recipientAccount = 'friend@another.com';
+            var userMessage = 'message';
+
+            //Act
+            var serverResponse = server.sendMessage(userName, userAccount, recipientAccount, userMessage);
+
+            //Assert
+            assert.deepEqual(serverResponse, true)
         });
 
     });
     describe('I ask to send message to unacceptable email address', function () {
         it('Server rejects', function () {
-            assert.deepEqual(server.sendMessage({name: 'Ivan', sorname: 'Petrov'}, 'asdhb', 'friend@', 'message'),
-                "Recipient email is not correct")
+            //Arrange
+            var userName = {name: 'Ivan', sorname: 'Petrov'};
+            var userAccount = 'asdhb';
+            var recipientAccount = 'friend@';
+            var userMessage = 'message';
+
+            //Act
+            var serverResponse = server.sendMessage(userName, userAccount, recipientAccount, userMessage);
+            
+            //Assert
+            assert.deepEqual(serverResponse, "Recipient email is not correct");
         });
 
     });
